@@ -13,7 +13,7 @@ dependencies {
 }
 ```
 
-# Configuration file
+# Configuration class
 
 The configuration file is annotated with `@FeatureToggleConfiguration`, which expects 2 parameters:
 - strictnessPolicy {COOL, MODERATE, HARSH}
@@ -26,7 +26,7 @@ The configuration file is annotated with `@FeatureToggleConfiguration`, which ex
 public class Config{
 }
 ```
-Define the toggles in the configuration file, the toggles are fields of type boolean with accessibility modifier default or public. Toggles are annotated by `@FeatureToggleBind(expirationDate = "yyyy-MM-dd", toggleName = "name")`, which has to params
+Define the toggles in the configuration file, the toggles are fields of type boolean with accessibility modifier default (if the manager class and configuration class are in the samen package) or public. Toggles are annotated by `@FeatureToggleBind(expirationDate = "yyyy-MM-dd", toggleName = "name")`, which has to params
 - expirationDate: yyyy-MM-dd, e.g. 2017-12-30
 - name: a name
 
@@ -44,8 +44,9 @@ public class Config {
 }
 ```
 
+# Manager class
 
-
+A manager class is responsible for the implementation of the toggle. It implements the FeatureToggler interface...TODO
 
 
 
