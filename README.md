@@ -1,2 +1,2 @@
 # ToggleProc
-Annotate you toggles with this library
+Annotate your toggles with this library
