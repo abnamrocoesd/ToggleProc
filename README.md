@@ -5,7 +5,7 @@ Features:
 * Build-time information about the toggles such as:
   * toggle expiration
   * exceeding number of toggles
-  * toggles too futuristic
+  * Too futuristic toggles
 * Configure whether the build breaks or gives warning when the above conditions are not met
 * Use annotation to define the toggles
 * TODO: use this library for A/B testing
@@ -14,11 +14,10 @@ Features:
 Add the dependency
 ```
 dependencies {
-  compile 'com.jakewharton:butterknife:8.8.1'
-  annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-  
+  //...
   compile files('com.abnarmo.nl:toggleproc:1.1')
   annotationProcessor files('com.abnarmo.nl:toggleproc:1.1')
+  //...
 }
 ```
 
