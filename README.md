@@ -34,7 +34,7 @@ The configuration file is annotated with `@FeatureToggleConfiguration`, which ex
 public class Config{
 }
 ```
-Define the toggles in the configuration file, the toggles are fields of type boolean with accessibility modifier default (if the manager class and configuration class are in the samen package) or public. Toggles are annotated by `@FeatureToggleBind(expirationDate = "yyyy-MM-dd", toggleName = "name")`, which has to params
+Define the toggles in the configuration file, the toggles are fields of type boolean with accessibility modifier default (if the manager class and configuration class are in the samen package) or public. Toggles are annotated by `@FeatureToggleBind(expirationDate = "yyyy-MM-dd", toggleName = "name")`, which has two parameters
 - expirationDate: yyyy-MM-dd, e.g. 2017-12-30
 - name: a name
 
