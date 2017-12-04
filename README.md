@@ -41,6 +41,19 @@ public class Config {
     boolean test3;
     @FeatureToggleBind(expirationDate = "2017-01-01", toggleName = "test4")
     boolean test4;
+    
+    public boolean isTest1() {
+        return test1;
+    }
+    public boolean isTest2() {
+        return test2;
+    }
+    public boolean isTest3() {
+        return test3;
+    }
+    public boolean isTest4() {
+        return test4;
+    }
 }
 ```
 
@@ -52,7 +65,36 @@ public interface FeatureToggler {
     boolean isEnabled(String toggleName);
 }
 ```
-The method isEnabled accepts accepts toggleName as parameter and returns true if the toggle is enabled.
+The method isEnabled accepts toggleName as parameter and returns true if the toggle is enabled. For example if you use Firebase Remote Config the its implementation will be something like
+```
+public class FeatureToggleManager implements FeatureToggler {
+    private final FeatureToggleConfig config;
 
 
+    protected FeatureToggleManager(Config config) {
+        this.config = config;
+        FeatureToggleBinder.bind(this, config);
+    }
+
+    public Config getToggles() {
+        return config;
+    }
+
+    @override
+    public boolean isEnabled(final String name){
+        return mFirebaseRemoteConfig.getBoolean(name);
+    }
+}
+```
+
+The manager uses the generated `FeatureToggleBinder.bind(this, config)` to bind the values.
+
+#Usage
+
+To use, just simply create a new instance of Manager (or use singleton) and use the `getToggles()`.
+```
+FeatureToggleManager manager = new FeatureToggleManager(new Config);
+boolean isTest1Enabled = manager.getToggles().isTest1();
+...
+```
 
