@@ -1,5 +1,13 @@
 # ToggleProc
-Annotate your toggles with this library
+Make your toggles manageable with this library.
+Features:
+* Build-time information about the toggles such as:
+  * toggle expiration
+  * exceeding number of toggles
+  * toggles too futuristic
+* Configure whether the build breaks or gives warning when the above conditions are not met
+* Use annotation to define the toggles
+* TODO: use this library for A/B testing
 
 # Getting started
 Add the dependency
@@ -89,7 +97,7 @@ public class FeatureToggleManager implements FeatureToggler {
 
 The manager uses the generated `FeatureToggleBinder.bind(this, config)` to bind the values.
 
-#Usage
+# Usage
 
 To use, just simply create a new instance of Manager (or use singleton) and use the `getToggles()`.
 ```
