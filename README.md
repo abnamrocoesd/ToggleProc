@@ -46,7 +46,13 @@ public class Config {
 
 # Manager class
 
-A manager class is responsible for the implementation of the toggle. It implements the FeatureToggler interface...TODO
+The manager class is responsible for the implementation of the toggle. It implements the FeatureToggler interface:
+```
+public interface FeatureToggler {
+    boolean isEnabled(String toggleName);
+}
+```
+The method isEnabled accepts accepts toggleName as parameter and returns true if the toggle is enabled.
 
 
 
