@@ -1,0 +1,49 @@
+group 'com.abnamro.nl'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "net.ltgt.gradle:gradle-apt-plugin:0.3"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: "net.ltgt.apt"
+
+
+sourceCompatibility = 1.7
+def genPath = new File(buildDir,"generated/source/apt/main" )
+task createGenPath {
+    if(!genPath.exists()){
+        genPath.mkdirs()
+    }
+}
+
+compileJava.dependsOn(createGenPath)
+
+compileJava {
+    source += genPath
+    //classpath += configurations.compile
+    options.compilerArgs += ['-s', genPath]
+}
+
+idea.module {
+    sourceDirs += genPath
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile files('../build/libs/toggleproc-1.1.jar')
+    apt files('../build/libs/toggleproc-1.1.jar')
+}
+
