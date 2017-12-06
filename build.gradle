@@ -1,4 +1,4 @@
-group 'com.abnarmo.nl'
+group 'com.abnamro.nl'
 archivesBaseName = "ToggleProc"
 version '1.1'
 
