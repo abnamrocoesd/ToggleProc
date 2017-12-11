@@ -16,10 +16,8 @@ import com.abnamro.nl.toggle.toggler.FeatureToggler;
 import com.abnamro.nl.toggle.processor.model.FeatureToggleBinding;
 import com.abnamro.nl.toggle.processor.model.PackageBinding;
 import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.FieldSpec;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 
 import java.io.IOException;
@@ -203,31 +201,11 @@ public class FeatureToggleProcessor extends ToggleProcessor {
 
             MethodSpec methodSpec = generateBindMethod(classBinding, numberOfToggles, policy);
             classBuilder.addMethod(methodSpec);
-            //List<MethodSpec> methodSpecs = generateGetterMethods(classBinding);
-            //classBuilder.addMethods(methodSpecs);
         }
 
         return classBuilder.build();
     }
 
-    private List<MethodSpec> generateGetterMethods(ClassBinding classBinding) {
-        List<MethodSpec> specs = new ArrayList<>();
-
-
-        for (ToggleBinding elementBinding : classBinding.getToggleBindings()) {
-            FeatureToggleBinding fElement = (FeatureToggleBinding) elementBinding;
-            String name = fElement.getName();
-            String methodName = "is"+name.substring(0, 1).toUpperCase() + name.substring(1);
-            MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder(methodName)
-                    .addModifiers(PUBLIC, STATIC).returns(TypeName.BOOLEAN);
-
-            methodBuilder.addStatement("return target.$N;",
-                    elementBinding.getName());
-            specs.add(methodBuilder.build());
-        }
-
-        return specs;
-    }
 
     private MethodSpec generateBindMethod(ClassBinding classBinding, int numberOfToggles, FeatureToggleConfiguration.StrictnessPolicy policy) {
         MethodSpec.Builder methodBuilder = MethodSpec.methodBuilder("bind")
