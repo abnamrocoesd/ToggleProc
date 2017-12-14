@@ -14,6 +14,10 @@ Features:
 # Getting started
 Add the dependency
 ```
+repositories {
+     mavenCentral()
+}
+
 dependencies {
   //...
   compile files('com.abnarmo.nl:toggleproc:1.1')
