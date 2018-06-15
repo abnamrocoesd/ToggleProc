@@ -20,8 +20,8 @@ repositories {
 
 dependencies {
   //...
-  compile('com.abnamro.nl:toggleproc:1.1')
-  annotationProcessor('com.abnamro.nl:toggleproc:1.1')
+  compile('com.abnamro:toggleproc:1.1')
+  annotationProcessor('com.abnamro:toggleproc:1.1')
   //...
 }
 ```
