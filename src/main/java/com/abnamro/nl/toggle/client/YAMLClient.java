@@ -30,12 +30,12 @@ public class YAMLClient {
         Boolean featureStatus = features.get(name);
         if (isPresentOnFile(featureStatus)) return featureStatus;
 
-        featureStatus = getFromDefaultValues(name);
-        return featureStatus != null ? featureStatus : false;
+        featureStatus = defaultValues.get(name);
+        return isPresentOnDefaultValues(featureStatus) ? featureStatus : false;
     }
 
-    private Boolean getFromDefaultValues(String name) {
-        return defaultValues.get(name);
+    private boolean isPresentOnDefaultValues(Boolean featureStatus) {
+        return featureStatus != null;
     }
 
     private boolean isPresentOnFile(Boolean value) {
