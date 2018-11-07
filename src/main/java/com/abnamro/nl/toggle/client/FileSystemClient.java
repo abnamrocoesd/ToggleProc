@@ -28,7 +28,7 @@ public class FileSystemClient {
         return getFromFileOrDefaultValue(name, features);
     }
 
-    protected String getFileName() {
+    String getFileName() {
         return fileName;
     }
 

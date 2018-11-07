@@ -11,8 +11,8 @@ import static org.junit.Assert.assertTrue;
 public class FileSystemClientConstructorTest {
 
     @Test
-    public void should_use_default_file_name_if_it_not_passed_through_constructor() {
-        FileSystemClient client = new FileSystemClient(null);
+    public void should_use_default_file_name_if_its_empty() {
+        FileSystemClient client = new FileSystemClient("", null);
         assertEquals("features.yml", client.getFileName());
     }
 
