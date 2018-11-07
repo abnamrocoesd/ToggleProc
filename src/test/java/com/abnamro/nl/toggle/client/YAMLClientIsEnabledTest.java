@@ -14,6 +14,7 @@ public class YAMLClientIsEnabledTest {
     private static final String FEATURE_ON_FILE_DISABLED = "featureOnFileDisabled";
     private static final String FEATURE_NOT_ON_FILE_ENABLED = "featureNotOnFileEnabled";
     private static final String FEATURE_NOT_ON_FILE_DISABLED = "featureNotOnFileDisabled";
+    private static final String FEATURE_NOT_ON_FILE_AND_NOT_ON_DEFAULTS = "featureNotOnFileAndNotOnDefaults";
     private YAMLClient client;
 
     private Map<String, Boolean> defaultValues = createDefaultValues();
@@ -37,6 +38,12 @@ public class YAMLClientIsEnabledTest {
         client = new YAMLClient(defaultValues);
         assertTrue(client.isEnabled(FEATURE_ON_FILE_ENABLED));
         assertFalse(client.isEnabled(FEATURE_ON_FILE_DISABLED));
+    }
+
+    @Test
+    public void feature_not_exist_on_file_nor_on_default_values() {
+        client = new YAMLClient(defaultValues);
+        assertFalse(client.isEnabled(FEATURE_NOT_ON_FILE_AND_NOT_ON_DEFAULTS));
     }
 
     private Map<String, Boolean> createDefaultValues() {
