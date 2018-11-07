@@ -10,11 +10,13 @@ import static org.junit.Assert.assertTrue;
 
 public class YAMLClientIsEnabledTest {
 
-    private static final String FEATURE_ON_FILE_ENABLED = "featureOnFileEnabled";
-    private static final String FEATURE_ON_FILE_DISABLED = "featureOnFileDisabled";
-    private static final String FEATURE_NOT_ON_FILE_ENABLED = "featureNotOnFileEnabled";
-    private static final String FEATURE_NOT_ON_FILE_DISABLED = "featureNotOnFileDisabled";
-    private static final String FEATURE_NOT_ON_FILE_AND_NOT_ON_DEFAULTS = "featureNotOnFileAndNotOnDefaults";
+    private final String FILE_NAME = "src/test/resources/features.yml";
+    private final String FEATURE_ON_FILE_ENABLED = "featureOnFileEnabled";
+    private final String FEATURE_ON_FILE_DISABLED = "featureOnFileDisabled";
+    private final String FEATURE_NOT_ON_FILE_ENABLED = "featureNotOnFileEnabled";
+    private final String FEATURE_NOT_ON_FILE_DISABLED = "featureNotOnFileDisabled";
+    private final String FEATURE_NOT_ON_FILE_AND_NOT_ON_DEFAULTS = "featureNotOnFileAndNotOnDefaults";
+
     private YAMLClient client;
 
     private Map<String, Boolean> defaultValues = createDefaultValues();
@@ -28,21 +30,21 @@ public class YAMLClientIsEnabledTest {
 
     @Test
     public void feature_not_exist_on_file() {
-        client = new YAMLClient(defaultValues);
+        client = new YAMLClient(FILE_NAME, defaultValues);
         assertTrue(client.isEnabled(FEATURE_NOT_ON_FILE_ENABLED));
         assertFalse(client.isEnabled(FEATURE_NOT_ON_FILE_DISABLED));
     }
 
     @Test
     public void feature_exist_on_file() {
-        client = new YAMLClient(defaultValues);
+        client = new YAMLClient(FILE_NAME, defaultValues);
         assertTrue(client.isEnabled(FEATURE_ON_FILE_ENABLED));
         assertFalse(client.isEnabled(FEATURE_ON_FILE_DISABLED));
     }
 
     @Test
     public void feature_not_exist_on_file_nor_on_default_values() {
-        client = new YAMLClient(defaultValues);
+        client = new YAMLClient(FILE_NAME, defaultValues);
         assertFalse(client.isEnabled(FEATURE_NOT_ON_FILE_AND_NOT_ON_DEFAULTS));
     }
 

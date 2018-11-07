@@ -2,13 +2,15 @@ package com.abnamro.nl.toggle.client;
 
 import org.yaml.snakeyaml.Yaml;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Map;
 
 public class YAMLClient {
 
     private final Map<String, Boolean> defaultValues;
-    private final String DEFAULT_FILE_NAME = "features.yml";
+    private final String DEFAULT_FILE_NAME = "src/main/resources/features.yml";
 
     private String fileName = DEFAULT_FILE_NAME;
 
@@ -21,11 +23,11 @@ public class YAMLClient {
     }
 
     public YAMLClient(Map<String, Boolean> defaultValues) {
-        this.defaultValues = defaultValues;
+        this(null, defaultValues);
     }
 
     public boolean isEnabled(String name) {
-        Map<String, Boolean> features = getFeaturesFromFile();
+        Map<String, Boolean> features = getStatusMap();
 
         Boolean featureStatus = features.get(name);
         if (isPresentOnFile(featureStatus)) return featureStatus;
@@ -46,15 +48,14 @@ public class YAMLClient {
         return fileName;
     }
 
-    private Map<String, Boolean> getFeaturesFromFile() {
-        InputStream is = this.getClass().getClassLoader().getResourceAsStream(fileName);
-        return fileExists(is) ?
-                new Yaml().<Map<String, Boolean>>load(is) : defaultValues;
+    private Map<String, Boolean> getStatusMap() {
+        InputStream is;
+        try {
+            is = new FileInputStream(fileName);
+        } catch (FileNotFoundException e) {
+            return defaultValues;
+        }
+        return new Yaml().load(is);
     }
-
-    private boolean fileExists(InputStream is) {
-        return is != null;
-    }
-
 
 }

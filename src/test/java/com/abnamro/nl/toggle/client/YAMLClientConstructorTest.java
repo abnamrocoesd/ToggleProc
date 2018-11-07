@@ -3,20 +3,19 @@ package com.abnamro.nl.toggle.client;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class YAMLClientConstructorTest {
 
     @Test
     public void should_use_default_file_name_if_its_empty() {
         YAMLClient client = new YAMLClient("", null);
-        assertEquals("features.yml", client.getFileName());
+        assertEquals("src/main/resources/features.yml", client.getFileName());
     }
 
     @Test
     public void should_use_default_file_name_if_it_is_null() {
         YAMLClient client = new YAMLClient(null, null);
-        assertEquals("features.yml", client.getFileName());
+        assertEquals("src/main/resources/features.yml", client.getFileName());
     }
 
     @Test
