@@ -26,19 +26,24 @@ public class YAMLClient {
 
     public boolean isEnabled(String name) {
         Map<String, Boolean> features = getFeaturesFromFile();
-        return getFromFileOrDefaultValue(name, features);
+
+        Boolean featureStatus = features.get(name);
+        if (isPresentOnFile(featureStatus)) return featureStatus;
+
+        featureStatus = getFromDefaultValues(name);
+        return featureStatus != null ? featureStatus : false;
+    }
+
+    private Boolean getFromDefaultValues(String name) {
+        return defaultValues.get(name);
+    }
+
+    private boolean isPresentOnFile(Boolean value) {
+        return value != null;
     }
 
     String getFileName() {
         return fileName;
-    }
-
-    private boolean getFromFileOrDefaultValue(String name, Map<String, Boolean> features) {
-        Boolean value = features.get(name);
-        if (value != null) {
-            return value;
-        }
-        return defaultValues.get(name);
     }
 
     private Map<String, Boolean> getFeaturesFromFile() {
