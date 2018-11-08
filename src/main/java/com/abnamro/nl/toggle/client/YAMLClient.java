@@ -23,7 +23,7 @@ public class YAMLClient {
     }
 
     public YAMLClient(Map<String, Boolean> defaultValues) {
-        this(null, defaultValues);
+        this(DEFAULT_FILE_NAME, defaultValues);
     }
 
     public boolean isEnabled(String name) {
