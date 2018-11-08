@@ -1,4 +1,4 @@
-package com.abnamro.nl.toggle.client;
+package cielo.toggleproc.client;
 
 import org.yaml.snakeyaml.Yaml;
 
@@ -23,7 +23,7 @@ public class YAMLClient {
     }
 
     public YAMLClient(Map<String, Boolean> defaultValues) {
-        this(DEFAULT_FILE_NAME, defaultValues);
+        this(null, defaultValues);
     }
 
     public boolean isEnabled(String name) {

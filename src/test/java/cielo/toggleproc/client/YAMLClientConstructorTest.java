@@ -1,4 +1,4 @@
-package com.abnamro.nl.toggle.client;
+package cielo.toggleproc.client;
 
 import org.junit.Test;
 

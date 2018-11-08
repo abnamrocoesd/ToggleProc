@@ -1,4 +1,4 @@
-package com.abnamro.nl.toggle.processor.model;
+package cielo.toggleproc.processor.model;
 
 import java.util.HashSet;
 import java.util.Set;

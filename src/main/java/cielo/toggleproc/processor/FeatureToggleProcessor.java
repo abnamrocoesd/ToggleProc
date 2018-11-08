@@ -1,20 +1,20 @@
-package com.abnamro.nl.toggle.processor;
+package cielo.toggleproc.processor;
 
 import static javax.lang.model.element.Modifier.FINAL;
 import static javax.lang.model.element.Modifier.PRIVATE;
 import static javax.lang.model.element.Modifier.PUBLIC;
 import static javax.lang.model.element.Modifier.STATIC;
 
-import com.abnamro.nl.toggle.annotation.FeatureToggleBind;
-import com.abnamro.nl.toggle.annotation.FeatureToggleConfiguration;
-import com.abnamro.nl.toggle.processor.exceptions.ToggleExpiredException;
-import com.abnamro.nl.toggle.processor.exceptions.ToggleTooFuturisticException;
-import com.abnamro.nl.toggle.processor.model.BindingSet;
-import com.abnamro.nl.toggle.processor.model.ClassBinding;
-import com.abnamro.nl.toggle.processor.model.ToggleBinding;
-import com.abnamro.nl.toggle.toggler.FeatureToggler;
-import com.abnamro.nl.toggle.processor.model.FeatureToggleBinding;
-import com.abnamro.nl.toggle.processor.model.PackageBinding;
+import cielo.toggleproc.annotation.FeatureToggleBind;
+import cielo.toggleproc.annotation.FeatureToggleConfiguration;
+import cielo.toggleproc.processor.model.BindingSet;
+import cielo.toggleproc.processor.exceptions.ToggleExpiredException;
+import cielo.toggleproc.processor.exceptions.ToggleTooFuturisticException;
+import cielo.toggleproc.processor.model.ClassBinding;
+import cielo.toggleproc.processor.model.FeatureToggleBinding;
+import cielo.toggleproc.processor.model.PackageBinding;
+import cielo.toggleproc.processor.model.ToggleBinding;
+import cielo.toggleproc.toggler.FeatureToggler;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;

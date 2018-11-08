@@ -1,4 +1,4 @@
-package com.abnamro.nl.toggle.annotation;
+package cielo.toggleproc.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

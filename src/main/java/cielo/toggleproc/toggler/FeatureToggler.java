@@ -1,4 +1,4 @@
-package com.abnamro.nl.toggle.toggler;
+package cielo.toggleproc.toggler;
 
 /**
  * Created by bsobat on 14/11/2017.

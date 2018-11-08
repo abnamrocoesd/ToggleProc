@@ -1,4 +1,4 @@
-package com.abnamro.nl.toggle.annotation;
+package cielo.toggleproc.annotation;
 
 /**
  * Created by bsobat on 08/11/2017.

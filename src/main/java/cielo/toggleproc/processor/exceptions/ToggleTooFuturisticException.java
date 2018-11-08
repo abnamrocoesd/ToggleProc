@@ -1,4 +1,4 @@
-package com.abnamro.nl.toggle.processor.exceptions;
+package cielo.toggleproc.processor.exceptions;
 
 public class ToggleTooFuturisticException extends Exception {
 

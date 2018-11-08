@@ -1,4 +1,4 @@
-package com.abnamro.nl.toggle.processor.model;
+package cielo.toggleproc.processor.model;
 
 import javax.lang.model.type.TypeMirror;
 

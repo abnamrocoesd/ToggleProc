@@ -1,4 +1,4 @@
-package com.abnamro.nl.toggle.processor;
+package cielo.toggleproc.processor;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Messager;
