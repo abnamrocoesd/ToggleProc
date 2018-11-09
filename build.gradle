@@ -1,4 +1,4 @@
-group 'cielo.toggleproc'
+group 'br.com.m4u.toggleproc'
 version '1.1'
 
 apply plugin: 'java'
@@ -16,34 +16,3 @@ dependencies {
     compile 'org.yaml:snakeyaml:1.23'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
-
-task fatJar(type: Jar) {
-    baseName = project.name
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
-}
-
-configurations {
-    resultArchives
-}
-
-
-uploadResultArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "same/url/here")
-        }
-    }
-}
-
-artifacts {
-    archives file: file('build/libs/'+project.name), name: 'result', type: 'jar'
-}
-
-signing {
-    sign configurations.archives
-}
-
-
-
-
