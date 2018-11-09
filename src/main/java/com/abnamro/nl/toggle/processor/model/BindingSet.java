@@ -1,4 +1,4 @@
-package cielo.toggleproc.processor.model;;
+package com.abnamro.nl.toggle.processor.model;;
 
 import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;

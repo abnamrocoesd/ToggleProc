@@ -1,11 +1,11 @@
-package cielo.toggleproc.processor;
+package com.abnamro.nl.toggle.processor;
 
-import cielo.toggleproc.annotation.FeatureToggleBind;
-import cielo.toggleproc.annotation.FeatureToggleConfiguration;
-import cielo.toggleproc.processor.exceptions.ToggleExpiredException;
-import cielo.toggleproc.processor.exceptions.ToggleTooFuturisticException;
-import cielo.toggleproc.processor.model.*;
-import cielo.toggleproc.toggler.FeatureToggler;
+import com.abnamro.nl.toggle.annotation.FeatureToggleBind;
+import com.abnamro.nl.toggle.annotation.FeatureToggleConfiguration;
+import com.abnamro.nl.toggle.processor.exceptions.ToggleExpiredException;
+import com.abnamro.nl.toggle.processor.exceptions.ToggleTooFuturisticException;
+import com.abnamro.nl.toggle.processor.model.*;
+import com.abnamro.nl.toggle.toggler.FeatureToggler;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;

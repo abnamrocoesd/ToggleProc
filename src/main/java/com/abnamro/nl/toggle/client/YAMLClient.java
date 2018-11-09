@@ -1,4 +1,4 @@
-package cielo.toggleproc.client;
+package com.abnamro.nl.toggle.client;
 
 import org.yaml.snakeyaml.Yaml;
 
