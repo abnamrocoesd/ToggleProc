@@ -22,29 +22,29 @@ public class YAMLClientIsEnabledTest {
     private Map<String, Boolean> defaultValues = createDefaultValues();
 
     @Test
-    public void file_not_exist() {
-        client = new YAMLClient("invalid.yml", defaultValues);
+    public void should_use_default_values_when_file_not_exist() {
+        client = getYAMLClient("invalid.yml");
         assertTrue(client.isEnabled(FEATURE_ON_FILE_ENABLED));
         assertTrue(client.isEnabled(FEATURE_ON_FILE_DISABLED));
     }
 
     @Test
     public void feature_not_exist_on_file() {
-        client = new YAMLClient(FILE_NAME, defaultValues);
+        client = getValidYAMLClient();
         assertTrue(client.isEnabled(FEATURE_NOT_ON_FILE_ENABLED));
         assertFalse(client.isEnabled(FEATURE_NOT_ON_FILE_DISABLED));
     }
 
     @Test
     public void feature_exist_on_file() {
-        client = new YAMLClient(FILE_NAME, defaultValues);
+        client = getValidYAMLClient();
         assertTrue(client.isEnabled(FEATURE_ON_FILE_ENABLED));
         assertFalse(client.isEnabled(FEATURE_ON_FILE_DISABLED));
     }
 
     @Test
-    public void feature_not_exist_on_file_nor_on_default_values() {
-        client = new YAMLClient(FILE_NAME, defaultValues);
+    public void should_not_enable_features_when_not_exist_on_file_nor_on_default_values() {
+        client = getValidYAMLClient();
         assertFalse(client.isEnabled(FEATURE_NOT_ON_FILE_AND_NOT_ON_DEFAULTS));
     }
 
@@ -55,6 +55,14 @@ public class YAMLClientIsEnabledTest {
         values.put(FEATURE_NOT_ON_FILE_ENABLED, true);
         values.put(FEATURE_NOT_ON_FILE_DISABLED, false);
         return values;
+    }
+
+    private YAMLClient getValidYAMLClient() {
+        return getYAMLClient(FILE_NAME);
+    }
+
+    private YAMLClient getYAMLClient(String s) {
+        return new YAMLClient(s, defaultValues);
     }
 
 
