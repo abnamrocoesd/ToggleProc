@@ -1,49 +1,31 @@
 package com.abnamro.nl.toggle.processor;
 
-import static javax.lang.model.element.Modifier.FINAL;
-import static javax.lang.model.element.Modifier.PRIVATE;
-import static javax.lang.model.element.Modifier.PUBLIC;
-import static javax.lang.model.element.Modifier.STATIC;
-
 import com.abnamro.nl.toggle.annotation.FeatureToggleBind;
 import com.abnamro.nl.toggle.annotation.FeatureToggleConfiguration;
 import com.abnamro.nl.toggle.processor.exceptions.ToggleExpiredException;
 import com.abnamro.nl.toggle.processor.exceptions.ToggleTooFuturisticException;
-import com.abnamro.nl.toggle.processor.model.BindingSet;
-import com.abnamro.nl.toggle.processor.model.ClassBinding;
-import com.abnamro.nl.toggle.processor.model.ToggleBinding;
+import com.abnamro.nl.toggle.processor.model.*;
 import com.abnamro.nl.toggle.toggler.FeatureToggler;
-import com.abnamro.nl.toggle.processor.model.FeatureToggleBinding;
-import com.abnamro.nl.toggle.processor.model.PackageBinding;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
-
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.Messager;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.Modifier;
-import javax.lang.model.element.PackageElement;
-import javax.lang.model.element.TypeElement;
+import javax.lang.model.element.*;
 import javax.lang.model.type.TypeMirror;
 import javax.tools.Diagnostic;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import static javax.lang.model.element.Modifier.*;
 
 @SupportedAnnotationTypes("FeatureToggleProcessor")
 public class FeatureToggleProcessor extends ToggleProcessor {
