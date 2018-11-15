@@ -1,5 +1,5 @@
 #!groovy
-import com.orgecc.jpl.AndroidLibraryPipeline
+import com.orgecc.jpl.JavaLibraryPipeline
 import com.orgecc.jpl.StarCityPipeline
 import com.orgecc.jpl.GitPipeline
 import com.orgecc.jpl.NotificationPipeline
@@ -7,7 +7,7 @@ import com.orgecc.jpl.Base
 
 
 def base          = new Base()
-def android       = new AndroidLibraryPipeline()
+def java       = new JavaLibraryPipeline()
 def metrics       = new StarCityPipeline()
 def git           = new GitPipeline()
 def notification  = new NotificationPipeline()
@@ -37,31 +37,15 @@ pipeline {
         stage("Clean") {
             steps {
               script {
-                android.clean()
+                java.clean()
               }
-            }
-        }
-
-        stage("Tests") {
-            steps {
-                script {
-                    android.runTests()
-                }
-            }
-        }
-
-        stage("Code Scan") {
-            steps {
-                script {
-                    android.codeStyleCheck()
-                }
             }
         }
 
         stage("Build") {
             steps {
                 script {
-                    android.build()
+                    java.build()
                 }
             }
         }
@@ -69,7 +53,7 @@ pipeline {
         stage("Publish") {
             steps {
                 script {
-                    android.publish()
+                    java.publish()
                 }
             }
         }
@@ -98,4 +82,3 @@ pipeline {
     }
 
 }
-
